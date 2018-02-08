@@ -35,10 +35,11 @@ describe('TodosComponent', () => {
 
   it('should load todos from the server', () => {
     const service = TestBed.get(TodoService);
-    spyOn(service, 'getTodos').and.returnValue(Observable.from([1, 2, 3]));
+    spyOn(service, 'getTodos').and.returnValue(Observable.of([1, 2, 3]));
 
     fixture.detectChanges();
 
     expect(component.todos.length).toBe(3);
+    expect(component.todos).toContain(1);
   });
 });
