@@ -3,6 +3,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/observable/of';
 
 import { TodosComponent } from './todos.component';
 import { TodoService } from './todo.service';
@@ -15,7 +18,7 @@ describe('TodosComponent', () => {
     TestBed.configureTestingModule({
       imports: [ HttpModule ],
       declarations: [ TodosComponent ],
-      providers: [ TodoService ],
+      providers: [ TodoService ]
     })
     .compileComponents();
   }));
@@ -23,10 +26,19 @@ describe('TodosComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TodosComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should load todos from the server', () => {
+    const service = TestBed.get(TodoService);
+    spyOn(service, 'getTodos').and.returnValue(Observable.from([1, 2, 3]));
+
+    fixture.detectChanges();
+
+    expect(component.todos.length).toBe(3);
   });
 });
