@@ -6,7 +6,6 @@ fdescribe('VoterComponent', () => {
   let component: VoterComponent;
   let fixture: ComponentFixture<VoterComponent>;
 
-
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ VoterComponent ]
@@ -48,21 +47,17 @@ fdescribe('VoterComponent', () => {
   });
 
   it('should increase the totalVotes when upvoted', () => {
-    component.othersVote = 10;
-    component.myVote = 0;
+    const button = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
+    button.triggerEventHandler('click', null);
 
-    component.upVote();
-
-    expect(component.totalVotes).toBe(11);
+    expect(component.totalVotes).toBe(1);
   });
 
   it('should decrease the totalVotes when downvoted', () => {
-    component.othersVote = 10;
-    component.myVote = 0;
+    const button = fixture.debugElement.query(By.css('.glyphicon-menu-down'));
+    button.triggerEventHandler('click', null);
 
-    component.downVote();
-
-    expect(component.totalVotes).toBe(9);
+    expect(component.totalVotes).toBe(-1);
   });
 
   
