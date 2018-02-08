@@ -2,7 +2,7 @@ import { VoterComponent } from './voter.component';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-fdescribe('VoterComponent', () => {
+describe('VoterComponent', () => {
   let component: VoterComponent;
   let fixture: ComponentFixture<VoterComponent>;
 
@@ -60,5 +60,4 @@ fdescribe('VoterComponent', () => {
     expect(component.totalVotes).toBe(-1);
   });
 
-  
 });

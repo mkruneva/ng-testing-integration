@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VoterComponent } from './voter.component';
 
-fdescribe('Ex3 Voter Component', () => {
+describe('Voter Component', () => {
   let component: VoterComponent;
 
   beforeEach(async(() => {
@@ -86,5 +86,6 @@ fdescribe('Ex3 Voter Component', () => {
 
     expect(eventData).toEqual({ myVote: -1});
   });
+
 });
 
