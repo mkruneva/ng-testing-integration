@@ -29,9 +29,8 @@ fdescribe('VoterComponent', () => {
 
   });
 
-  it('should rhighlight the menu-up icon when upvoted', () => {
+  it('should highlight the menu-up icon when upvoted', () => {
     component.myVote = 1;
-    // component.upVote();
     fixture.detectChanges();
 
     const de = fixture.debugElement.query(By.css('.glyphicon-menu-up'));
@@ -39,13 +38,32 @@ fdescribe('VoterComponent', () => {
     expect(de.classes['highlighted']).toBeTruthy;
   });
 
-  it('should rhighlight the menu-down icon when downvoted', () => {
+  it('should highlight the menu-down icon when downvoted', () => {
     component.myVote = -1;
-    // component.upVote();
     fixture.detectChanges();
 
     const de = fixture.debugElement.query(By.css('.glyphicon-menu-down'));
 
     expect(de.classes['highlighted']).toBeTruthy;
   });
+
+  it('should increase the totalVotes when upvoted', () => {
+    component.othersVote = 10;
+    component.myVote = 0;
+
+    component.upVote();
+
+    expect(component.totalVotes).toBe(11);
+  });
+
+  it('should decrease the totalVotes when downvoted', () => {
+    component.othersVote = 10;
+    component.myVote = 0;
+
+    component.downVote();
+
+    expect(component.totalVotes).toBe(9);
+  });
+
+  
 });
