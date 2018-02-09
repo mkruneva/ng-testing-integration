@@ -10,7 +10,7 @@ import 'rxjs/add/observable/of';
 import { TodosComponent } from './todos.component';
 import { TodoService } from './todo.service';
 
-describe('TodosComponent', () => {
+describe('Todos Component', () => {
   let component: TodosComponent;
   let fixture: ComponentFixture<TodosComponent>;
 

@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { VoterComponent } from './voter.component';
 
-describe('Voter Component', () => {
+describe('Voter Component Unit', () => {
   let component: VoterComponent;
 
   beforeEach(async(() => {
