@@ -17,7 +17,7 @@ class ActivatedRouteStub {
   params: Observable<any> = Observable.empty();
 }
 
-fdescribe('UserDetailsComponent', () => {
+describe('UserDetailsComponent', () => {
   let component: UserDetailsComponent;
   let fixture: ComponentFixture<UserDetailsComponent>;
 
@@ -40,5 +40,14 @@ fdescribe('UserDetailsComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should redirect the user to users page after saving', () => {
+    const router = TestBed.get(Router);
+    const spy = spyOn(router, 'navigate');
+
+    component.save();
+
+    expect(spy).toHaveBeenCalledWith(['users']);
   });
 });
